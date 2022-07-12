@@ -1,6 +1,6 @@
 {
   "name": "normalize-url-search-params",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Normalize a URLSearchParams",
   "files": [
     "index.js",
