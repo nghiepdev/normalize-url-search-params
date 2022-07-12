@@ -3,7 +3,8 @@
     "strict": true,
     "target": "es5",
     "module": "commonjs",
-    "lib": ["DOM", "es2017"],
-    "declaration": true
+    "lib": ["dom", "dom.iterable", "es2017"],
+    "declaration": true,
+    "downlevelIteration": true
   }
 }
