@@ -2,9 +2,8 @@
   "name": "normalize-url-search-params",
   "version": "0.1.0",
   "description": "Normalize a URLSearchParams",
-  "file": [
-    "index.js",
-    "index.d.ts"
+  "files": [
+    "index.js"
   ],
   "scripts": {
     "build": "tsc",
