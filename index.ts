@@ -91,7 +91,7 @@ export interface Options {
     //=> '/admin/posts/?foo=bar'
     ```
    */
-  removeParameters: (string | RegExp)[];
+  removeParameters?: (string | RegExp)[];
 }
 
 export function normalizeUrlSearchParams(
