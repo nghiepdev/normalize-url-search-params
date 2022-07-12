@@ -1,4 +1,5 @@
 const __DOMAIN = 'http://this.is.a.fake.domain';
+const __DEFAULT_REMOVE_PARAMETERS = [/^utm_\w+/i];
 
 function testParameter(name: string, filters: (string | RegExp)[]) {
   return filters.some(filter =>
@@ -104,11 +105,13 @@ export function normalizeUrlSearchParams(
   const removePage1 = options?.removePage1 ?? false;
   const shouldSort = options?.sort ?? false;
   const data = options?.data ?? {};
-  const removeParameters = options?.removeParameters ?? [/^utm_\w+/i];
+  const removeParameters =
+    options?.removeParameters ?? __DEFAULT_REMOVE_PARAMETERS;
 
   const url = new URL(input, __DOMAIN);
 
-  const shouldNormalize = booleanAsNumber || removeParameters.length;
+  const shouldNormalize =
+    removeEmpty || booleanAsNumber || removePage1 || removeParameters.length;
 
   for (const [key, value] of Object.entries(data)) {
     if (removeEmpty && value === '') {
@@ -159,6 +162,11 @@ export function normalizeUrlSearchParams(
     for (const [key, value] of new URLSearchParams(
       url.searchParams
     ).entries()) {
+      if (removeEmpty && value === '') {
+        url.searchParams.delete(key);
+        continue;
+      }
+
       if (booleanAsNumber) {
         if (value === 'true') {
           url.searchParams.set(key, '1');
@@ -169,6 +177,11 @@ export function normalizeUrlSearchParams(
           url.searchParams.set(key, '0');
           continue;
         }
+      }
+
+      if (removePage1 && key === 'page' && value === '1') {
+        url.searchParams.delete(key);
+        continue;
       }
 
       if (testParameter(key, removeParameters)) {

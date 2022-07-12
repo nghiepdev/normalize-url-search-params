@@ -26,10 +26,6 @@ npm install normalize-url-search-params
 ### Example:
 
 ```ts
-import {normalizeUrlSearchParams} from 'normalize-url-search-params';
-
-const {normalizeUrlSearchParams} = require('./index');
-
 test('simple', () => {
   expect(
     normalizeUrlSearchParams('/admin/posts', {
@@ -39,6 +35,17 @@ test('simple', () => {
       },
     })
   ).toEqual('/admin/posts?page=2&sort=created_at');
+});
+
+test('test with removeEmpty', () => {
+  expect(
+    normalizeUrlSearchParams('/admin/posts?abc', {
+      data: {
+        xyz: '',
+      },
+      removeEmpty: true,
+    })
+  ).toEqual('/admin/posts');
 });
 
 test('test with booleanAsNumber', () => {
@@ -54,13 +61,14 @@ test('test with booleanAsNumber', () => {
 
 test('test with removePage1', () => {
   expect(
-    normalizeUrlSearchParams('/admin/posts?page=2', {
+    normalizeUrlSearchParams('/admin/posts?page=1', {
       data: {
-        page: 1,
+        active: true,
+        role: 'admin',
       },
       removePage1: true,
     })
-  ).toEqual('/admin/posts');
+  ).toEqual('/admin/posts?active=1&role=admin');
 });
 
 test('test with sort', () => {
