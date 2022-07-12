@@ -1,0 +1,35 @@
+{
+  "name": "normalize-url-search-params",
+  "version": "0.1.0",
+  "description": "Normalize a URLSearchParams",
+  "file": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npx jest",
+    "pretest": "npm run build",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "url search params",
+    "normalize"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nghiepit/normalize-url-search-params.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nghiepit/normalize-url-search-params/issues"
+  },
+  "homepage": "https://github.com/nghiepit/normalize-url-search-params",
+  "author": "Nghiep <me@nghiep.dev>",
+  "license": "MIT"
+}

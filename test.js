@@ -1,0 +1,1 @@
+const {normalizeUrlSearchParams} = require('./index');
