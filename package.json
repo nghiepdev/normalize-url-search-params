@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Normalize a URLSearchParams",
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "tsc",
