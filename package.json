@@ -2,12 +2,21 @@
   "name": "normalize-url-search-params",
   "version": "0.1.2",
   "description": "Normalize a URLSearchParams",
+  "type": "module",
+  "source": "./index.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.modern.js",
   "files": [
-    "index.js",
-    "index.d.ts"
+    "dist"
   ],
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npx microbundle --strict --no-sourcemap --format=modern,esm,cjs",
     "test": "npx jest",
     "pretest": "npm run build",
     "prepublishOnly": "npm test"

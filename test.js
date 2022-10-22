@@ -1,4 +1,4 @@
-const {normalizeUrlSearchParams} = require('./index');
+const {normalizeUrlSearchParams} = require('./dist');
 
 test('simple', () => {
   expect(
