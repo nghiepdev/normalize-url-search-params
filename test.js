@@ -1,4 +1,4 @@
-const {normalizeUrlSearchParams} = require('./dist');
+const {normalizeUrlSearchParams} = require('./dist/index.cjs');
 
 test('simple', () => {
   expect(
